@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.api.UserWealthMapper">
+	<!-- 获取用户财务信息 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.wealth.UserWealth" id="userWealth">
+		<result column="Score" property="score" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="Insure" property="insure" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="Diamond" property="diamond" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="AwardTicket" property="awardTicket" javaType="java.lang.Long" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="callGetUserWealth" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="userWealth">  
+       <![CDATA[  
+	    {call WHQJTreasureDB.dbo.GSP_GR_GetUserWealth(#{userId,mode=IN,jdbcType=INTEGER},#{'',mode=IN,jdbcType=VARCHAR},#{'',mode=IN,jdbcType=VARCHAR})} 
+  	   ]]>
+  	</select>
+</mapper>

@@ -1,0 +1,171 @@
+{
+    "data": {
+        "list": [
+            {
+                "id": 10100000,
+                "url": "",
+                "name": "业务移交管理",
+                "iconfont": "&#xe60e;",
+                "sub":[
+                    {
+                    	"id": 10101000,
+                        "url": "",
+                        "name": "移交综合查询",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10101001,
+                                "url": "/audit/transfer/queryprint",
+                                "name": "查询与打印",
+                                "iconfont": "&#xe659;"
+                            }
+                        ]
+                    }	
+                ]
+            },
+            {
+                "id": 10200000,
+                "url": "",
+                "name": "稽查业务经办",
+                "iconfont": "&#xe654;",
+                "sub":[
+                    {
+                    	"id": 10201000,
+                        "url": "",
+                        "name": "稽查业务经办",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10201001,
+                                "url": "/audit/inspect/casetransactstaff",
+                                "name": "办案人员修改",
+                                "iconfont": "&#xe605;"
+                            }
+                        ]
+                    },	
+                    {
+                    	"id": 10202000,
+                        "url": "",
+                        "name": "稽查结论传达",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10202001,
+                                "url": "/audit/conclusion/examineregister",
+                                "name": "纳入考核登记",
+                                "iconfont": "&#xe605;"
+                            },
+                            {
+                                "id": 10202002,
+                                "url": "/audit/conclusion/examinegather",
+                                "name": "纳入考核汇总",
+                                "iconfont": "&#xe605;"
+                            },
+                            {
+                                "id": 10202003,
+                                "url": "/audit/conclusion/communicateregister",
+                                "name": "案件移送登记",
+                                "iconfont": "&#xe63f;"
+                            }
+                        ]
+                    }	
+                ]
+            },
+            {
+                "id": 10300000,
+                "url": "",
+                "name": "信息数据维护",
+                "iconfont": "&#xe634;",
+                "sub":[
+                    {
+                    	"id": 10301000,
+                        "url": "",
+                        "name": "信息数据维护",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10301001,
+                                "url": "/audit/statute/disposesuggestion",
+                                "name": "处理意见项目维护",
+                                "iconfont": "&#xe653;"
+                            },
+                            {
+                                "id": 10301002,
+                                "url": "/audit/statute/examinestandard",
+                                "name": "纳入考核项目维护",
+                                "iconfont": "&#xe653;"
+                            },
+                            {
+                                "id": 10301003,
+                                "url": "/audit/statute/policybasis",
+                                "name": "政策依据维护",
+                                "iconfont": "&#xe653;"
+                            },
+                            {
+                                "id": 10301004,
+                                "url": "/audit/statute/policyagreement",
+                                "name": "政策协议维护",
+                                "iconfont": "&#xe653;"
+                            }
+                        ]
+                    }	
+                ]
+            },
+            {
+                "id": 10400000,
+                "url": "",
+                "name": "社区药品进销存",
+                "iconfont": "&#xe637;",
+                "sub":[
+                    {
+                    	"id": 10401000,
+                        "url": "",
+                        "name": "医院端",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10401001,
+                                "url": "/audit/inventory/hospitalupload",
+                                "name": "医院端上传",
+                                "iconfont": "&#xe653;"
+                            },
+                            {
+                                "id": 10301002,
+                                "url": "/audit/inventory/hospitalquery",
+                                "name": "医院端查询",
+                                "iconfont": "&#xe653;"
+                            }
+                        ]
+                    },
+                    {
+                    	"id": 10402000,
+                        "url": "",
+                        "name": "中心端",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10402001,
+                                "url": "/audit/inventory/centerapproval",
+                                "name": "中心端审批",
+                                "iconfont": "&#xe653;"
+                            },
+                            {
+                                "id": 10402002,
+                                "url": "/audit/inventory/centernotupload",
+                                "name": "中心端未上传社区查询",
+                                "iconfont": "&#xe653;"
+                            },
+                            {
+                                "id": 10402003,
+                                "url": "/audit/inventory/centerdownload",
+                                "name": "中心端下载报表",
+                                "iconfont": "&#xe653;"
+                            }
+                        ]
+                    }	
+                ]
+            }
+        ]
+    },
+    "status": 200
+}

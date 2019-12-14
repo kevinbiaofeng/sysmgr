@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.index.DistributeStatDataMapper">
+
+
+    <select id="queryTotalGoldStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.SingtonPieDTO">
+        SELECT
+        cast(round(cast(ISNULL(SUM(a.Score),0) as float)/100,2) as numeric(20,2)) AS totalScore,
+        cast(round(cast(ISNULL(SUM(a.InsureScore),0) as float)/100,2) as numeric(20,2)) AS totalInsureScore
+        FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a
+        left join [WHQJAccountsDB].[dbo].[AccountsInfo] b
+        on a.UserID = b.UserID
+        where 1 = 1
+        <if test="merchant != null and merchant != ''">
+            and b.Merchant = #{merchant,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+    <select id="queryDistributeGoldStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.SingtonPieDTO">
+
+        SELECT '1万以下' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1 <if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&lt;10000 UNION ALL
+        SELECT '1万~10万' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1 <if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&gt;=10000 AND (Score+InsureScore)&lt;100000 UNION ALL
+        SELECT '10万~50万' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1 <if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&gt;=100000 AND (Score+InsureScore)&lt;500000 UNION ALL
+        SELECT '50万~100万' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1 <if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&gt;=500000 AND (Score+InsureScore)&lt;1000000 UNION ALL
+        SELECT '100万~500万' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1 <if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&gt;=1000000 AND (Score+InsureScore)&lt;5000000 UNION ALL
+        SELECT '500万~1000万' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1 <if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&gt;=5000000 AND (Score+InsureScore)&lt;10000000 UNION ALL
+        SELECT '1000万~5000万' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1<if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&gt;=10000000 AND (Score+InsureScore)&lt;50000000 UNION ALL
+        SELECT '5000万以上' AS name, COUNT(a.UserID) AS value FROM [WHQJTreasureDB].[dbo].[GameScoreInfo] a left join [WHQJAccountsDB].[dbo].[AccountsInfo] b on a.UserID = b.UserID WHERE 1 = 1 <if test="merchant != null and merchant != ''"> and b.Merchant = #{merchant,jdbcType=VARCHAR} </if> and (a.Score+a.InsureScore)&gt;=50000000
+
+    </select>
+
+
+
+</mapper>

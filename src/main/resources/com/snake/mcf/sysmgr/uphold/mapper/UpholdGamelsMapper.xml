@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.uphold.UpholdGamelsMapper">
+
+    <select id="loadGameModuleData" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.ComboBoxDTO">
+         select a.GameID as id , a.GameName as text from [WHQJPlatformDB].[dbo].[GameGameItem] a
+         where 1 = 1
+        order by a.GameID asc
+    </select>
+
+</mapper>

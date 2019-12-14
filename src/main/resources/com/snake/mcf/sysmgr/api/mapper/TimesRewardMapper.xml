@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.api.TimesRewardMapper">
+	<!-- 每日分享奖励 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.share.TimesReward" id="timesReward">
+		<result column="rst" property="rst" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="TimeShareDiamond" property="timeShareDiamond" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="TimeShareGold" property="timeShareGold" javaType="java.lang.Long" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="callTimesReward" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="timesReward">  
+       <![CDATA[  
+	   {call WHQJNativeWebDB.dbo.PW_TimesReward(#{userId,mode=IN,jdbcType=VARCHAR}, #{strClientIp,mode=IN,jdbcType=VARCHAR})}
+  	   ]]>
+  	</select>
+</mapper>

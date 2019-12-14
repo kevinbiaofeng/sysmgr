@@ -1,0 +1,29 @@
+{
+    "data": {
+        "list": [
+            {
+                "id": 10100000,
+                "url": "",
+                "name": "业务移交管理",
+                "iconfont": "&#xe60e;",
+                "sub":[
+                    {
+                    	"id": 10101000,
+                        "url": "",
+                        "name": "移交综合查询",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10101001,
+                                "url": "/audit/transfer/queryprint",
+                                "name": "查询与打印",
+                                "iconfont": "&#xe659;"
+                            }
+                        ]
+                    }	
+                ]
+            }
+        ]
+    },
+    "status": 200
+}

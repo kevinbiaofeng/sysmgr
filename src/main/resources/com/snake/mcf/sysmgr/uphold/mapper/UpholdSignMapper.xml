@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.uphold.UpholdSignMapper">
+
+    <select id="queryGamePackageGoodsWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.GamepackagegoodsDTO">
+        select a.GoodsID,a.TypeID,a.PropertyID,a.GoodsNum,a.ResourceURL,a.CollectDate,b.Name as packageName from [WHQJPlatformDB].[dbo].[GamePackageGoods] a
+        left join [WHQJPlatformDB].[dbo].[GamePackage] b
+        on a.PackageID = b.PackageID where 1 =1
+        <if test="typeid != null">
+              and a.TypeID =  #{typeid,jdbcType=INTEGER}
+        </if>
+        <if test="merchant != null and merchant != ''">
+            and b.Merchant = #{merchant,jdbcType=VARCHAR}
+        </if>
+        order by a.CollectDate DESC
+    </select>
+
+    <select id="loadGamePackageData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.ComboBoxDTO">
+          select a.PackageID as id , a.Name as text from [WHQJPlatformDB].[dbo].[GamePackage] a
+          where 1 = 1 and a.Nullity = #{nullity,jdbcType=INTEGER}
+            <if test="merchant != null and merchant != ''">
+                and a.Merchant = #{merchant,jdbcType=VARCHAR}
+            </if>
+          order by a.PackageID asc
+    </select>
+
+    <select id="queryGameSignInWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.GamesigninDTO">
+          select a.SignID,a.TypeID,a.NeedDay,a.SortID,a.Nullity,a.CollectDate,b.Name as packageName , concat(a.Probability,'%') as probabilityDesc from [WHQJPlatformDB].[dbo].[GameSignIn] a
+          left join [WHQJPlatformDB].[dbo].[GamePackage] b
+          on a.PackageID = b.PackageID
+          where 1 = 1
+          <if test="typeId != null">
+              and a.TypeID =  #{typeId,jdbcType=INTEGER}
+          </if>
+        <if test="merchant != null and merchant != ''">
+            and b.Merchant = #{merchant,jdbcType=VARCHAR}
+        </if>
+          order by a.CollectDate desc , a.SortID asc
+    </select>
+
+    <select id="queryRecordGameSignInWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.RecordgamesigninDTO">
+        select a.RecordID,a.CollectDate,a.SignType,a.PackageName,a.PackageGoods,a.Probability,a.NeedDay,a.TotalDay,a.ClinetIP,b.GameID,b.NickName from [WHQJRecordDB].[dbo].[RecordGameSignIn] a
+        left join [WHQJAccountsDB].[dbo].[AccountsInfo] b
+        on a.UserID = b.UserID where 1 = 1
+
+        <if test="gameid != null and gameid != ''">
+            and b.GameID =  #{gameid,jdbcType=INTEGER}
+        </if>
+
+        <if test="signtype != null">
+            and a.SignType =  #{signtype,jdbcType=INTEGER}
+        </if>
+
+        <if test="collectdateStartStr != null and collectdateStartStr != ''">
+            and a.CollectDate &gt;= #{collectdateStartStr,jdbcType=VARCHAR}
+        </if>
+        <if test="collectdateEndStr != null and collectdateEndStr != ''">
+            and a.CollectDate &lt;= #{collectdateEndStr,jdbcType=VARCHAR}
+        </if>
+
+        <if test="merchant != null and merchant != ''">
+            and b.Merchant = #{merchant,jdbcType=VARCHAR}
+        </if>
+
+        order by a.CollectDate desc
+    </select>
+
+
+
+
+
+
+
+</mapper>

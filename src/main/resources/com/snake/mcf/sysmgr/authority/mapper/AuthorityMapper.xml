@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.authority.AuthorityMapper">
+
+    <select id="queryUserRoleByUserId" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.TbSysRoleDTO">
+          select a.ID,a.Code,a.Name,a.IsDeleted,a.CreatedBy,a.CreatedDate,a.UpdatedDate,a.Permission,a.MerchantAggent from [JavaSystemManager].[dbo].[TbSysRole] a
+          left join [JavaSystemManager].[dbo].[TbSysUserRole] b
+          on a.ID = b.RoleId where b.UserId = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryMenuListByUserId" parameterType="map" resultType="com.snake.mcf.common.ui.menu.filter.LayMenuFilter">
+        select a.menuid as id ,a.url,a.Permission as permission,a.name,a.icon as iconfont, a.ParentMenuid as parentMenuid, a.Lev as lev from [JavaSystemManager].[dbo].[TbSysResource] a
+        left join [JavaSystemManager].[dbo].[TbSysRoleResource] b on a.ID = b.ResourceId
+        left join [JavaSystemManager].[dbo].[TbSysRole] c on c.ID = b.RoleId
+        left join [JavaSystemManager].[dbo].[TbSysUserRole] d on d.RoleId = c.ID
+		where d.UserId = #{userId,jdbcType=VARCHAR}
+        <if test="parentMenuid != null and parentMenuid != ''">
+            and a.ParentMenuid =  #{parentMenuid,jdbcType=VARCHAR}
+        </if>
+        <if test="lev != null and lev != ''">
+            and a.Lev =  #{lev,jdbcType=INTEGER}
+        </if>
+        group by a.menuid,a.url,a.name,a.icon,a.ParentMenuid,a.Lev,a.Permission
+        order by a.Menuid asc
+    </select>
+
+</mapper>

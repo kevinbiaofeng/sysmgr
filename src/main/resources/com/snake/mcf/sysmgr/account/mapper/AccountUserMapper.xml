@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.account.AccountUserMapper">
+
+    <select id="queryAccountUserWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.AccountsInfoDTO">
+        select a.UserID,a.GameID,a.NickName,a.Accounts,a.PlayTimeCount,a.OnLineTimeCount,a.Gender,a.SpreaderID,a.RegisterDate,
+        a.RegisterIP,a.GameLogonTimes,a.LastLogonDate,a.LastLogonIP,a.RegisterOrigin,a.Merchant,a.Nullity,
+        b.Score,
+        b.InsureScore,
+        b.Revenue,
+        b.WinCount,b.LostCount,
+        b.DrawCount,b.FleeCount,
+        (b.WinCount + b.LostCount+b.DrawCount+b.FleeCount) as allCount
+         from [WHQJAccountsDB].[dbo].[AccountsInfo] a
+        left join [WHQJTreasureDB].[dbo].[GameScoreInfo] b
+        on a.UserID = b.UserID
+        where 1 = 1  and a.isAndroid = 0 and a.MasterRight = 0
+
+        <if test="gameId != null and gameId != ''">
+            and a.GameID = #{gameId,jdbcType=INTEGER}
+        </if>
+        <if test="accounts != null and accounts != ''">
+        	and a.accounts = #{accounts,jdbcType=VARCHAR}
+        </if>
+        <if test="nickName != null and nickName != ''">
+            and a.NickName = #{nickName,jdbcType=VARCHAR}
+        </if>
+        <if test="nullity != null and nullity != ''">
+            and a.Nullity =  #{nullity,jdbcType=INTEGER}
+        </if>
+        <if test="agentId != null and agentId != ''">
+            and a.AgentID =  #{agentId,jdbcType=INTEGER}
+        </if>
+        <if test="spreaderId != null and spreaderId != ''">
+            and a.SpreaderID =  #{spreaderId,jdbcType=INTEGER}
+        </if>
+
+        <if test="scoreStart != null and scoreStart != ''">
+            and b.Score &gt;= #{scoreStart,jdbcType=BIGINT}
+        </if>
+        <if test="scoreEnd != null and scoreEnd != ''">
+            and b.Score &lt;= #{scoreEnd,jdbcType=BIGINT}
+        </if>
+
+        <if test="insurescoreStart != null and insurescoreStart != ''">
+            and b.InsureScore &gt;= #{insurescoreStart,jdbcType=BIGINT}
+        </if>
+        <if test="insurescoreEnd != null and insurescoreEnd != ''">
+            and b.InsureScore &lt;= #{insurescoreEnd,jdbcType=BIGINT}
+        </if>
+
+        <if test="revenueStart != null and revenueStart != ''">
+            and b.Revenue &gt;= #{revenueStart,jdbcType=BIGINT}
+        </if>
+        <if test="revenueEnd != null and revenueEnd != ''">
+            and b.Revenue &lt;= #{revenueEnd,jdbcType=BIGINT}
+        </if>
+
+        <if test="merchant != null and merchant != ''">
+            and a.Merchant = #{merchant,jdbcType=VARCHAR}
+        </if>
+
+        order by b.RegisterDate desc
+    </select>
+    
+    <select id="selectAccountInfoByUserIds" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.AccountsInfo">
+        select UserID,GameID,SpreaderID,Accounts,NickName,RegAccounts,UnderWrite,PassPortID,Compellation,LogonPass,InsurePass,DynamicPass,DynamicPassTime,FaceID,
+        CustomID,UserRight,MasterRight,ServiceRight,MasterOrder,MemberOrder,MemberOverDate,MemberSwitchDate,CustomFaceVer,Gender,Nullity,NullityOverDate,StunDown,
+        MoorMachine,IsAndroid,WebLogonTimes,GameLogonTimes,PlayTimeCount,OnLineTimeCount,LastLogonIP,LastLogonDate,LastLogonMobile,LastLogonMachine,RegisterIP,
+        RegisterDate,RegisterMobile,RegisterMachine,RegisterOrigin,ClientType,PlatformID,UserUin,RankID,AgentID,Merchant,PlaceName from [WHQJAccountsDB].[dbo].[AccountsInfo] WHERE UserID IN
+        <foreach collection="userIdList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <update id="batchSetTransfer" parameterType="map">
+        UPDATE [WHQJAccountsDB].[dbo].[AccountsInfo] SET UserRight= UserRight | 64 WHERE UserID IN
+        <foreach collection="userIdList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="batchCancleTransfer" parameterType="map">
+        UPDATE [WHQJAccountsDB].[dbo].[AccountsInfo] SET UserRight= UserRight ^ 64 WHERE UserID IN
+        <foreach collection="userIdList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="batchTransfer" parameterType="map">
+        UPDATE [WHQJAccountsDB].[dbo].[AccountsInfo] SET UserRight= UserRight ${calc} ${userRight} WHERE UserID IN
+        <foreach collection="userIdList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="batchTransferAll" parameterType="map">
+        UPDATE [WHQJAccountsDB].[dbo].[AccountsInfo] SET UserRight= UserRight ${calc} ${userRight}
+    </update>
+
+
+
+</mapper>

@@ -1,0 +1,104 @@
+{
+    "status": 200,
+    "data": {
+        "list": [
+            {
+                "id": "112100000",
+                "url": null,
+                "name": "业务移交管理",
+                "iconfont": "&#xe60e;",
+                "sub": [
+                    {
+                        "id": "112101000",
+                        "url": null,
+                        "name": "移交综合查询",
+                        "iconfont": "&#xe61a;",
+                        "sub": [
+                            {
+                                "id": "112101001",
+                                "url": "/audit/transfer/queryprint",
+                                "name": "查询与打印",
+                                "iconfont": "&#xe659;",
+                                "sub": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "112200000",
+                "url": null,
+                "name": "稽查业务经办",
+                "iconfont": "&#xe654;",
+                "sub": [
+                    {
+                        "id": "112201000",
+                        "url": null,
+                        "name": "稽查结论传达",
+                        "iconfont": "&#xe61a;",
+                        "sub": [
+                            {
+                                "id": "112201001",
+                                "url": "/audit/conclusion/examineregister",
+                                "name": "纳入考核登记",
+                                "iconfont": "&#xe605;",
+                                "sub": null
+                            },
+                            {
+                                "id": "112201003",
+                                "url": "/audit/conclusion/communicateregister",
+                                "name": "案件移送登记",
+                                "iconfont": "&#xe63f;",
+                                "sub": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "112300000",
+                "url": null,
+                "name": "信息数据维护",
+                "iconfont": "&#xe634;",
+                "sub": [
+                    {
+                        "id": "112301000",
+                        "url": null,
+                        "name": "信息数据维护",
+                        "iconfont": "&#xe61a;",
+                        "sub": [
+                            {
+                                "id": "112301001",
+                                "url": "/audit/statute/disposesuggestion",
+                                "name": "处理意见项目维护",
+                                "iconfont": "&#xe653;",
+                                "sub": null
+                            },
+                            {
+                                "id": "112301002",
+                                "url": "/audit/statute/examinestandard",
+                                "name": "纳入考核项目维护",
+                                "iconfont": "&#xe653;",
+                                "sub": null
+                            },
+                            {
+                                "id": "112301003",
+                                "url": "/audit/statute/policybasis",
+                                "name": "政策依据维护",
+                                "iconfont": "&#xe653;",
+                                "sub": null
+                            },
+                            {
+                                "id": "112301004",
+                                "url": "/audit/statute/policyagreement",
+                                "name": "政策协议维护",
+                                "iconfont": "&#xe653;",
+                                "sub": null
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

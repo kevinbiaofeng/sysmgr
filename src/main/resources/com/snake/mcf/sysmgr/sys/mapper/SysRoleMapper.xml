@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.sys.SysRoleMapper">
+
+    <select id="queryResourceByUserId" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.TbSysResource">
+          select a.ID,a.Menuid,a.ParentMenuid,a.Code,a.Name,a.Description,a.Url,a.Lev,a.Sort,a.Permission,a.CreatedBy,a.CreatedDate,a.UpdatedBy,a.UpdatedDate,a.Icon
+          from [JavaSystemManager].[dbo].[TbSysResource] a
+          left join [JavaSystemManager].[dbo].[TbSysRoleResource] b
+          on a.ID = b.ResourceId
+          left join [JavaSystemManager].[dbo].[TbSysRole] c
+          on c.ID = b.RoleId
+          left join [JavaSystemManager].[dbo].[TbSysUserRole] d
+          on d.RoleId = c.ID
+          left join [JavaSystemManager].[dbo].[TbSysUser] e
+          on e.ID = d.UserId where e.Merchant = #{merchant,jdbcType=VARCHAR}
+          and a.ParentMenuid = #{parentMenuid,jdbcType=VARCHAR}  and a.Lev = #{lev,jdbcType=INTEGER} order by a.Menuid asc
+    </select>
+
+
+
+</mapper>

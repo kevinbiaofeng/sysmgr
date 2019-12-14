@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.ffar.FfarManageMapper">
+
+
+    <select id="queryIMGroupPropertyWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.ImgrouppropertyDTO">
+          select a.GroupID,a.GroupName,a.CreaterGameID,a.CreaterNickName,a.GroupStatus,a.MemberCount,a.MaxMemberCount,a.CreateDateTime,c.ConsumeIngot,c.Ingot,c.BattleCreate from [WHQJGroupDB].[dbo].[IMGroupProperty] a
+          left join [WHQJAccountsDB].[dbo].[AccountsInfo] b
+          on a.CreaterGameID = b.GameID
+          left join [WHQJGroupDB].[dbo].[IMGroupWealth] c
+          on c.GroupID = a.GroupID
+          where 1 = 1
+            /*CreaterGameID*/
+            <if test="creatergameid != null and creatergameid != ''">
+                and a.CreaterGameID =  #{creatergameid,jdbcType=INTEGER}
+            </if>
+
+            /*creaternickname*/
+            <if test="creaternickname != null and creaternickname != ''">
+                and a.CreaterNickName =  #{creaternickname,jdbcType=VARCHAR}
+            </if>
+
+            /*商户号*/
+            <if test="merchant != null and merchant != ''">
+                and b.Merchant = #{merchant,jdbcType=VARCHAR}
+            </if>
+
+          order by a.CreateDateTime desc
+    </select>
+
+    <select id="queryGroupMemberWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.ImgroupmemberDTO">
+          select a.GroupID,a.UserID,a.BattleCount,a.JoinDateTime,b.GameID,b.NickName from [WHQJGroupDB].[dbo].[IMGroupMember] a
+          left join [WHQJAccountsDB].[dbo].[AccountsInfo] b
+          on a.UserID = b.UserID
+          where 1 = 1
+            /*GroupID*/
+            <if test="groupid != null and groupid != ''">
+                and a.GroupID =  #{groupid,jdbcType=INTEGER}
+            </if>
+            /*商户号*/
+            <if test="merchant != null and merchant != ''">
+                and b.Merchant = #{merchant,jdbcType=VARCHAR}
+            </if>
+          order by a.JoinDateTime desc
+    </select>
+
+
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.api.CallGetDayRankingDataMapper">
+	<!-- 获取财富排行榜 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.rank.WealthRankData" id="wealthRankData">
+		<result column="RankNum" property="rankNum" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="UserID" property="userId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="GameID" property="gameId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="NickName" property="nickName" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="FaceUrl" property="faceUrl" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="FaceID" property="faceId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="UnderWrite" property="underWrite" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Gold" property="gold" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="Gender" property="gender" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 获取胜局排行榜 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.rank.GameRankData" id="gameRankData">
+		<result column="RankNum" property="rankNum" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="UserID" property="userId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="GameID" property="gameId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="NickName" property="nickName" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="FaceUrl" property="faceUrl" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="FaceID" property="faceId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="UnderWrite" property="underWrite" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="WinCount" property="winCount" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="Gender" property="gender" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="callGetDayWealthRankingData" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="wealthRankData,wealthRankData">  
+       <![CDATA[  
+	    {call WHQJNativeWebDB.dbo.NET_PW_GetDayRankingData(#{userId,mode=IN,jdbcType=INTEGER},#{typeId,mode=IN,jdbcType=INTEGER})} 
+  	   ]]>
+  	</select>
+  	
+  	<select id="callGetDayGameRankingData" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="gameRankData,gameRankData">  
+       <![CDATA[  
+	    {call WHQJNativeWebDB.dbo.NET_PW_GetDayRankingData(#{userId,mode=IN,jdbcType=INTEGER},#{typeId,mode=IN,jdbcType=INTEGER})} 
+  	   ]]>
+  	</select>
+</mapper>

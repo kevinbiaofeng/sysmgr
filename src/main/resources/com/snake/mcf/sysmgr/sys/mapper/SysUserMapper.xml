@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.sys.SysUserMapper">
+
+    <select id="queryRoleByUserId" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.TbSysRoleDTO">
+          select a.id,a.name,a.code,b.UserId from [JavaSystemManager].[dbo].[TbSysRole] a
+          left join [JavaSystemManager].[dbo].[TbSysUserRole] b
+          on a.ID = b.RoleId where a.IsDeleted = '0' and b.UserId = #{userId,jdbcType=VARCHAR}
+    </select>
+
+
+
+</mapper>

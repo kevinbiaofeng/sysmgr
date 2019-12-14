@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.goldmgr.GoldmgrGamerdMapper">
+
+
+    <select id="queryRecordDrawInfoWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.RecorddrawinfoDTO">
+        select a.DrawID,a.InsertTime,a.TableID,a.UserCount,a.AndroidCount,a.Waste,a.Revenue,a.StartTime,a.ConcludeTime,d.KindName,e.ServerName,c.GameID as gameid,
+          c.NickName,c.IsAndroid,b.ChairID,b.Score,b.Revenue as Revenue1,
+          b.PlayTimeCount,b.InsertTime as InsertTime1
+        from [WHQJTreasureDB].[dbo].[RecordDrawInfo] a
+        left join [WHQJTreasureDB].[dbo].[RecordDrawScore] b
+        on a.DrawID = b.DrawID
+        left join [WHQJAccountsDB].[dbo].[AccountsInfo] c
+        on c.UserID = b.UserID
+        left join [WHQJPlatformDB].[dbo].[MobileKindItem] d
+        on d.KindID = a.KindID
+        left join [WHQJPlatformDB].[dbo].[GameRoomInfo] e
+        on e.ServerID = a.ServerID
+        where 1 = 1
+
+        /*开始日期*/
+        <if test="inserttimeStartStr != null and inserttimeStartStr != ''">
+            and a.InsertTime &gt;= #{inserttimeStartStr,jdbcType=VARCHAR}
+        </if>
+
+        /*结束日期*/
+        <if test="inserttimeEndStr != null and inserttimeEndStr != ''">
+            and a.InsertTime &lt;= #{inserttimeEndStr,jdbcType=VARCHAR}
+        </if>
+
+        /*gameID*/
+        <if test="gameid != null and gameid != ''">
+            and c.GameID =  #{gameid,jdbcType=INTEGER}
+        </if>
+
+        /*merchant*/
+        <if test="merchant != null and merchant != ''">
+            and c.Merchant =  #{merchant,jdbcType=VARCHAR}
+        </if>
+
+        order by a.DrawID desc,a.StartTime desc
+    </select>
+
+
+
+
+</mapper>

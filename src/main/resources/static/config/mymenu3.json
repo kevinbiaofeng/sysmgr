@@ -1,0 +1,192 @@
+{
+    "data": {
+        "list": [
+            {
+                "id": 10100000,
+                "url": "",
+                "name": "指标预警",
+                "iconfont": "&#xe637;",
+                "sub": [
+                    {
+                        "id": 10101000,
+                        "url": "",
+                        "name": "预警监控",
+                        "iconfont": "&#xe637;",
+                        "sub": [
+                            {
+                                "id": 10101001,
+                                "url": "",
+                                "name": "钻取图",
+                                "iconfont": "&#xe62a;"
+                            },
+                            {
+                                "id": 10101002,
+                                "url": "",
+                                "name": "动态图",
+                                "iconfont": "&#xe635;"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 10200000,
+                "url": "",
+                "name": "医疗机构",
+                "iconfont": "&#xe631;",
+                "sub": [
+                    {
+                        "id": 10200101,
+                        "url": "",
+                        "name": "各项费用汇总",
+                        "iconfont": "&#xe61a;",
+                        "sub": []
+                    },
+                    {
+                        "id": 10200102,
+                        "url": "/zt05/zt05",
+                        "name": "门诊基本情况",
+                        "iconfont": "&#xe60d;",
+                        "sub": []
+                    },
+                    {
+                        "id": 10200103,
+                        "url": "/www/yljgmzgxzbzf/index.html",
+                        "name": "门诊各类费用占比及占比增幅",
+                        "iconfont": "&#xe610;",
+                        "sub": []
+                    },
+                    {
+                        "id": 10200104,
+                        "url": "/zt06/zt06",
+                        "name": "住院基本情况",
+                        "iconfont": "&#xe610;",
+                        "sub": []
+                    },
+                    {
+                        "id": 10200105,
+                        "url": "/www/yljgzygxzbzf/index.html",
+                        "name": "住院各类费用占比及占比增幅",
+                        "iconfont": "&#xe610;",
+                        "sub": []
+                    }
+                ]
+            },
+            {
+                "id": 10300000,
+                "url": "",
+                "name": "专项指标",
+                "iconfont": "&#xe672;",
+                "sub": [
+                    {
+                        "id": 10300100,
+                        "url": "",
+                        "name": "门诊专项",
+                        "iconfont": "&#xe672;",
+                        "sub": [
+                            {
+                                "id": 10300101,
+                                "url": "/www/xfy/index.html",
+                                "name": "门诊小费用结算专项",
+                                "iconfont": "&#xe630;"
+                            },
+                            {
+                                "id": 10300102,
+                                "url": "/www/ydmzsf/index.html",
+                                "name": "门诊治疗三费",
+                                "iconfont": "&#xe60f;"
+                            },
+                            {
+                                "id": 10300103,
+                                "url": "/www/ydmzhyf/index.html",
+                                "name": "门诊化验费",
+                                "iconfont": "&#xe74d;"
+                            },
+                            {
+                                "id": 10300104,
+                                "url": "/www/ydmzcsf/index.html",
+                                "name": "门诊超声费",
+                                "iconfont": "&#xe74d;"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 10300200,
+                        "url": "",
+                        "name": "住院专项",
+                        "iconfont": "&#xe672;",
+                        "sub": [
+                            {
+                                "id": 10300201,
+                                "url": "/www/ydzysf/index.html",
+                                "name": "住院治疗三费",
+                                "iconfont": "&#xe630;"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 10400000,
+                "url": "",
+                "name": "系统管理",
+                "iconfont": "&#xe689;",
+                "sub": [
+                    {
+                        "id": 10401000,
+                        "url": "",
+                        "name": "权限系统",
+                        "iconfont": "&#xe646;",
+                        "sub": [
+                            {
+                                "id": 10401001,
+                                "url": "role_authen.html",
+                                "name": "角色授权",
+                                "iconfont": "&#xe689;"
+                            },
+                            {
+                                "id": 10401002,
+                                "url": "user_authen.html",
+                                "name": "用户授权",
+                                "iconfont": "&#xe64a;"
+                            },
+                            {
+                                "id": 10401003,
+                                "url": "menu.html",
+                                "name": "菜单管理",
+                                "iconfont": "&#xe654;"
+                            },
+                            {
+                                "id": 10401004,
+                                "url": "user.html",
+                                "name": "用户管理",
+                                "iconfont": "&#xe629;"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 10402000,
+                        "url": "",
+                        "name": "系统日志",
+                        "iconfont": "&#xe609;",
+                        "sub": [
+                            {
+                                "id": 10402001,
+                                "url": "admin-role.html",
+                                "name": "登录日志",
+                                "iconfont": "&#xe608;"
+                            },
+                            {
+                                "id": 10402002,
+                                "url": "admin-permission.html",
+                                "name": "操作日志",
+                                "iconfont": "&#xe668;"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "status": 200
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.uphold.UpholdSysmsgMapper">
+
+
+    <select id="loadSecondGroup" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.group.GameInfoGroup">
+          select a.KindID as id , a.KindName as text , 'closed' as state
+          from [WHQJPlatformDB].[dbo].[MobileKindItem] a where 1 = 1 order by a.KindID asc
+    </select>
+
+    <select id="loadThreeGroup" parameterType="int" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.group.GameInfoGroup">
+        select a.ServerID as id , a.ServerName as text , 'opend' as state
+        from [WHQJPlatformDB].[dbo].[GameRoomInfo] a
+        where a.KindID = #{kindid,jdbcType=INTEGER} order by a.ServerID asc
+    </select>
+
+</mapper>

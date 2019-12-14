@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.api.MobileLoginDataMapper">
+	<!-- 获取系统配置 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.SystemStatusInfo" id="systemStatusInfo">
+		<result column="StatusName" property="statusName" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="StatusValue" property="statusValue" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 获取客服配置 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.ConfigInfo" id="configInfo">
+		<result column="Phone" property="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="WeiXin" property="weiXin" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="QQ" property="qq" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Link" property="link" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 获取系统公告 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.SystemNotice" id="systemNotice">
+		<result column="NoticeID" property="noticeID" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="NoticeTitle" property="noticeTitle" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="MoblieContent" property="moblieContent" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="PublisherTime" property="publisherTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result column="PlatformType" property="platformType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 获取广告资源 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.AdsList" id="adsList">
+		<result column="Title" property="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="ResourceURL" property="resourceURL" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="LinkURL" property="linkURL" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="SortID" property="sortID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="PlatformType" property="platformType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="FileMD5" property="fileMD5" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.AdsAlertList" id="adsAlertList">
+		<result column="Title" property="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="ResourceURL" property="resourceURL" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="LinkURL" property="linkURL" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="SortID" property="sortID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="PlatformType" property="platformType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="FileMD5" property="fileMD5" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<resultMap type="java.util.HashMap" id="diamond">  
+		<result column="Field1"  property="field1" javaType="java.lang.Integer" jdbcType="INTEGER" />   
+	</resultMap>
+	  
+	<resultMap type="java.util.HashMap" id="money">  
+		<result column="Field1"  property="field1" javaType="java.lang.Integer" jdbcType="INTEGER" />   
+	</resultMap>
+	
+	<!-- 活动公告 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.ActivityList" id="activityList">
+		<result column="Title" property="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="ResourceURL" property="resourceURL" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="LinkURL" property="linkURL" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="SortID" property="sortID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="PlatformType" property="platformType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="FileMD5" property="fileMD5" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 签到物品配置 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.GamePackageGoods" id="gamePackageGoods">
+		<result column="GoodsID" property="goodsID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="PackageID" property="packageID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="TypeID" property="typeID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="PackageTypeID" property="packageTypeID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="ResourceURL" property="resourceURL" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Name" property="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="SortID" property="sortID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 亲友圈 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.logindata.IMGroupOption" id="imGroupOption">
+		<result column="OptionName" property="optionName" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="OptionValue" property="optionValue" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 域名地址 -->
+	<resultMap type="java.util.HashMap" id="url">  
+		<result column="PicUrlPrefix"  property="picUrlPrefix" javaType="java.lang.String" jdbcType="VARCHAR" />   
+	</resultMap>
+	
+	<select id="callGetMobileLoginData" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="systemStatusInfo,configInfo,systemNotice,adsList,adsAlertList,diamond,money,activityList,gamePackageGoods,imGroupOption,url">  
+       <![CDATA[  
+	    {call WHQJNativeWebDB.dbo.NET_PW_GetMobileLoginData(#{platformType,mode=IN,jdbcType=INTEGER})} 
+  	   ]]>
+  	</select>
+</mapper>

@@ -1,0 +1,30 @@
+/* ----------    ������ʽ  -----------------    */
+*{ margin:0px; padding:0px; border:none; line-height:22px;}
+body{width:100%;font-size:12px;color:#464646; font-family:Arial, Helvetica, sans-serif; background:#ECFFFF url(../images/login/warpBg.gif) repeat-x 0 0;}
+
+#login {width:100%;background:url(../images/login/logoBg.jpg) no-repeat center 0;height:540px;}
+.login_page { position:relative;width:100%;padding-top:171px;background:url(../images/login/bg01.png) no-repeat center 185px;}
+.logo{position:absolute;left:50%;top:75px;margin-left:-240px;height:65px;width:480px;background:url(../images/login/logo.gif) no-repeat center 0;}
+.froms { width:1004px;margin:0 auto;height:245px;background:url(../images/login/adminBg.png) no-repeat 0 0;}
+.froms dl{width:240px;height:200px;padding-left:387px;padding-top:40px;}
+.froms dl dt,.froms dl dd{line-height:30px;height:30px;color:#505758;font-family:'Microsoft Yahei';}
+.froms dl dd .userIcon,
+.froms dl dd .pwsIcon{display:block;line-height:20px;height:20px;padding:5px 5px 5px 47px;width:170px;}
+.userIcon{background:url(../images/login/userBg.gif) no-repeat 0 0}
+.pwsIcon{background:url(../images/login/pwsBg.gif) no-repeat 0 0}
+.textinput{border:0;background:none;padding:0;line-height:18px;width:100%;color:#A0A0A0;}
+
+.submitBtn,
+.resetBtn{width:79px;height:27px;border:0;padding:0;margin:0 10px;font-size:12px;font-family:'Microsoft Yahei';color:#fff;cursor:pointer;}
+.submitBtn{background:url(../images/login/btn_01.gif) no-repeat 0 0}
+.resetBtn{background:url(../images/login/btn_02.gif) no-repeat 0 0}
+.form_foot{padding-top:10px;text-align:center;width:92%}
+.froms dl dd.pT10{padding-top:10px;}
+
+.copyright {padding-top:30px;width:100%; text-align:center; color:#707070;}
+
+
+
+
+
+

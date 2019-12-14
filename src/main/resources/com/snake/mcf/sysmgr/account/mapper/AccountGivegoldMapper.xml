@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.account.AccountGivegoldMapper">
+
+    <select id="queryGivegoldWithPage" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.RecordgranttreasureDTO">
+          select a.RecordID,a.CollectDate,a.CurGold,a.AddGold,a.MasterID,a.ClientIP,b.GameID,b.NickName ,b.Accounts as accounts, (a.AddGold + a.CurGold) as allGold from [WHQJRecordDB].[dbo].[RecordGrantTreasure] a
+          left join [WHQJAccountsDB].[dbo].[AccountsInfo] b
+          on a.UserID = b.UserID where 1 = 1
+
+        <if test="gameId != null and gameId != ''">
+            and b.GameID =  #{gameId,jdbcType=INTEGER}
+        </if>
+        <if test="collectdateStartStr != null and collectdateStartStr != ''">
+            and a.CollectDate &gt;= #{collectdateStartStr,jdbcType=VARCHAR}
+        </if>
+        <if test="collectdateEndStr != null and collectdateEndStr != ''">
+            and a.CollectDate &lt;= #{collectdateEndStr,jdbcType=VARCHAR}
+        </if>
+        <if test="merchant != null and merchant != ''">
+            and b.merchant = #{merchant,jdbcType=VARCHAR}
+        </if>
+
+        order by a.CollectDate desc
+    </select>
+
+</mapper>

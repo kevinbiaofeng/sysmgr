@@ -1,0 +1,78 @@
+[{
+	"id": 1,
+	"menuid": "10100000",
+	"parentMenuid": "0",
+	"name": "系统管理",
+	"createdByName": "系统管理员",
+	"updatedByName": null,
+	"createdDate": "2019-01-02 16:24:47",
+	"updatedDate": null,
+	"state": "closed",
+	"children": [{
+		"id": 2,
+		"menuid": "10101000",
+		"parentMenuid": "10100000",
+		"name": "权限管理",
+		"createdByName": "系统管理员",
+		"updatedByName": null,
+		"createdDate": "2019-01-03 02:18:56",
+		"updatedDate": null,
+		"state": "closed",
+		"children": [{
+			"id": 5,
+			"menuid": "10101001",
+			"parentMenuid": "10101000",
+			"name": "用户管理",
+			"createdByName": "系统管理员",
+			"updatedByName": null,
+			"createdDate": "2019-01-03 02:22:22",
+			"updatedDate": null,
+			"state": "opend",
+			"children": null
+		}, {
+			"id": 6,
+			"menuid": "10101002",
+			"parentMenuid": "10101000",
+			"name": "角色管理",
+			"createdByName": "系统管理员",
+			"updatedByName": null,
+			"createdDate": "2019-01-03 02:37:22",
+			"updatedDate": null,
+			"state": "opend",
+			"children": null
+		}, {
+			"id": 7,
+			"menuid": "10101003",
+			"parentMenuid": "10101000",
+			"name": "资源管理",
+			"createdByName": "系统管理员",
+			"updatedByName": null,
+			"createdDate": "2019-01-03 02:37:54",
+			"updatedDate": null,
+			"state": "opend",
+			"children": null
+		}]
+	}, {
+		"id": 3,
+		"menuid": "10102000",
+		"parentMenuid": "10100000",
+		"name": "商户管理",
+		"createdByName": "系统管理员",
+		"updatedByName": null,
+		"createdDate": "2019-01-03 02:20:01",
+		"updatedDate": null,
+		"state": "closed",
+		"children": [{
+			"id": 4,
+			"menuid": "10102001",
+			"parentMenuid": "10102000",
+			"name": "商户管理",
+			"createdByName": "系统管理员",
+			"updatedByName": null,
+			"createdDate": "2019-01-03 02:21:14",
+			"updatedDate": null,
+			"state": "opend",
+			"children": null
+		}]
+	}]
+}]

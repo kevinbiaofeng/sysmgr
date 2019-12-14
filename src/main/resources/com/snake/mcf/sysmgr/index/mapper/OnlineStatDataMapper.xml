@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.index.OnlineStatDataMapper">
+
+    <select id="dailyOnlineStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.MultipleLineDTO">
+        SELECT CONVERT(varchar(20), a.InsertDateTime , 120) as abscissa,
+        a.OnLineCountSum as seriesData2,
+        a.AndroidCountSum as  seriesData1
+        FROM [WHQJPlatformDB].[dbo].[OnLineStreamInfo] a
+        WHERE a.InsertDateTime&gt;=#{start,jdbcType=VARCHAR} AND a.InsertDateTime&lt;=#{end,jdbcType=VARCHAR}
+        ORDER BY a.InsertDateTime ASC
+    </select>
+
+
+
+
+
+</mapper>

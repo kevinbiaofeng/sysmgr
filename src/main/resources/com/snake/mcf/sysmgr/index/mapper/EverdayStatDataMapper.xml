@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.index.EverdayStatDataMapper">
+
+    <select id="dailyRegistStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.SingtonLineDTO">
+        SELECT CONVERT(varchar(10), a.CollectDate , 120) as abscissa,
+        (a.WebRegister + a.H5Register + a.GameRegister) as seriesData
+        FROM [WHQJNativeWebDB].[dbo].[StreamEveryDayData] a
+        WHERE a.CollectDate&gt;=#{start,jdbcType=VARCHAR} AND a.CollectDate&lt;=#{end,jdbcType=VARCHAR}
+        order by a.CollectDate asc
+    </select>
+
+    <select id="dailyPayStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.SingtonLineDTO">
+        SELECT CONVERT(varchar(10), a.CollectDate , 120) as abscissa,
+        a.PayAmount as seriesData
+        FROM [WHQJNativeWebDB].[dbo].[StreamEveryDayData] a
+        WHERE a.CollectDate&gt;=#{start,jdbcType=VARCHAR} AND a.CollectDate&lt;=#{end,jdbcType=VARCHAR}
+        order by a.CollectDate asc
+    </select>
+
+    <select id="dailyGoldStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.MultipleLineDTO">
+        SELECT CONVERT(varchar(10), a.CollectDate , 120) as abscissa,
+        CONVERT(numeric(21,2),CONVERT(numeric(21,2),ISNULL(a.Gold,0))/100) as seriesData1,
+        CONVERT(numeric(21,2),CONVERT(numeric(21,2),ISNULL(a.PayGold,0))/100) as seriesData2
+        FROM [WHQJNativeWebDB].[dbo].[StreamEveryDayData] a
+        WHERE a.CollectDate&gt;=#{start,jdbcType=VARCHAR} AND a.CollectDate&lt;=#{end,jdbcType=VARCHAR}
+        order by a.CollectDate asc
+    </select>
+
+    <select id="dailyRevenueStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.MultipleLineDTO">
+        SELECT CONVERT(varchar(10), a.CollectDate , 120) as abscissa,
+        CONVERT(numeric(21,2),CONVERT(numeric(21,2),ISNULL(a.GameRevenue,0))/100) as seriesData1,
+        CONVERT(numeric(21,2),CONVERT(numeric(21,2),ISNULL(a.InsureRevenue,0))/100) as seriesData2,
+        CONVERT(numeric(21,2),CONVERT(numeric(21,2),ISNULL(((a.GameRevenue + a.InsureRevenue)),0))/100) as seriesData3
+        FROM [WHQJNativeWebDB].[dbo].[StreamEveryDayData] a
+        WHERE a.CollectDate&gt;=#{start,jdbcType=VARCHAR} AND a.CollectDate&lt;=#{end,jdbcType=VARCHAR}
+        order by a.CollectDate asc
+    </select>
+
+    <select id="dailyWasteStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.SingtonLineDTO">
+        SELECT CONVERT(varchar(10), a.CollectDate , 120) as abscissa,
+        CONVERT(numeric(21,2),CONVERT(numeric(21,2),ISNULL(a.GameWaste,0))/100) as seriesData
+        FROM [WHQJNativeWebDB].[dbo].[StreamEveryDayData] a
+        WHERE a.CollectDate&gt;=#{start,jdbcType=VARCHAR} AND a.CollectDate&lt;=#{end,jdbcType=VARCHAR}
+        order by a.CollectDate asc
+    </select>
+
+    <select id="dailyOpenRoomStatData" parameterType="map" resultType="com.snake.mcf.sysmgr.repertory.entity.dto.index.SingtonLineDTO">
+        SELECT CONVERT(varchar(10), a.CollectDate , 120) as abscissa,
+        a.CreateGoldRoom as seriesData
+        FROM [WHQJNativeWebDB].[dbo].[StreamEveryDayData] a
+        WHERE a.CollectDate&gt;=#{start,jdbcType=VARCHAR} AND a.CollectDate&lt;=#{end,jdbcType=VARCHAR}
+        order by a.CollectDate asc
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+{
+	"status": 200,
+    "data": {
+        "list": [
+            {
+                "id": 10100000,
+                "url": "",
+                "name": "系统管理",
+                "iconfont": "&#xe60e;",
+                "sub":[
+                    {
+                    	"id": 10101000,
+                        "url": "",
+                        "name": "权限管理",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10101001,
+                                "url": "/sys/user/index",
+                                "name": "用户管理",
+                                "iconfont": "&#xe67a;"
+                            },
+                            {
+                                "id": 10101002,
+                                "url": "/sys/role/index",
+                                "name": "角色管理",
+                                "iconfont": "&#xe67a;"
+                            },
+                            {
+                                "id": 10101003,
+                                "url": "/sys/resource/index",
+                                "name": "资源管理",
+                                "iconfont": "&#xe67a;"
+                            }
+                        ]
+                    },
+                    {
+                    	"id": 10102000,
+                        "url": "",
+                        "name": "111",
+                        "iconfont": "&#xe61a;",
+                        "sub":[
+                            {
+                                "id": 10102002,
+                                "url": "/seller/user/index",
+                                "name": "1111",
+                                "iconfont": "&#xe67a;"
+                            }
+                        ]
+                    }	
+                ]
+            }
+        ]
+    }
+}

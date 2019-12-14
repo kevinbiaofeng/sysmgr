@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.api.HallBattleRecordMapper">
+
+	<!-- 获取战绩详情 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.battle.RecordBackInfo" id="recordBackInfo">
+		<result column="GamesNum" property="gamesNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="RoomID" property="roomId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="UserID" property="userId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="Score" property="score" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="ID" property="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 房主信息 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.battle.RoomAccountInfo" id="roomAccountInfo">
+		<result column="UserID" property="userId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="GameID" property="gameId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="NickName" property="nickName" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 战绩信息 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.battle.RoomScore" id="roomScore">
+		<result column="PersonalRoomGUID" property="personalRoomGuid" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="KindID" property="kindId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="RoomID" property="roomId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="Score" property="score" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="CellScore" property="cellScore" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="StartTime" property="startTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result column="RoomHostID" property="roomHostId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="PlayBackCode" property="playBackCode" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="ChairID" property="chairId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+  	<!-- 获取游戏成绩 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.battle.DrawScore" id="drawScore">
+		<result column="DrawID" property="drawId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="KindID" property="kindId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="Score" property="score" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="Grade" property="grade" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="Revenue" property="revenue" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="InsertTime" property="insertTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- 获取游戏信息 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.battle.RecordDrawInfo" id="recordDrawInfo">
+		<result column="DrawId" property="drawId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="UserCount" property="userCount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="AndroidCount" property="androidCount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 获取游戏配置 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.battle.GameKindItem" id="gameKindItem">
+		<result column="KindID" property="kindId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="KindName" property="kindName" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 约战记录 -->
+	<select id="callGetHallBattleRecordTypeOne" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="recordBackInfo,gameKindItem,roomAccountInfo,roomAccountInfo,roomScore">  
+       <![CDATA[
+	    {call WHQJPlatformDB.dbo.NET_PW_GetHallBattleRecord(#{userId,mode=IN,jdbcType=INTEGER}, 1)} 
+  	   ]]>
+  	</select>
+  	
+  	<!-- 金币场记录 -->
+	<select id="callGetHallBattleRecordTypeTwo" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="drawScore,recordDrawInfo,gameKindItem">  
+       <![CDATA[
+	    {call WHQJPlatformDB.dbo.NET_PW_GetHallBattleRecord(#{userId,mode=IN,jdbcType=INTEGER}, 2)} 
+  	   ]]>
+  	</select>
+  	
+  	<!-- 亲友圈战绩 -->
+	<select id="callGetClubBattleRecord" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="recordBackInfo,gameKindItem,roomAccountInfo,roomAccountInfo,roomScore">  
+       <![CDATA[
+	    {call WHQJPlatformDB.dbo.NET_PW_GetClubBattleRecord(#{groupId,mode=IN,jdbcType=INTEGER}, #{userId,mode=IN,jdbcType=INTEGER}, #{startTime,mode=IN,jdbcType=TIMESTAMP}, #{endTime,mode=IN,jdbcType=TIMESTAMP})} 
+  	   ]]>
+  	</select>
+</mapper>

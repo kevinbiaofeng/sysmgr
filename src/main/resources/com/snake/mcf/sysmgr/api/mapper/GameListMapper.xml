@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snake.mcf.sysmgr.mapper.api.GameListMapper">
+	<!-- 获取大厅版本配置 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.gamelist.GameListConfigInfo" id="gameListConfigInfo">
+		<result column="Field1" property="field1" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field2" property="field2" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field3" property="field3" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field4" property="field4" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field5" property="field5" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field6" property="field6" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field7" property="field7" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field8" property="field8" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field9" property="field9" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="Field10" property="field10" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 获取游戏列表 -->
+	<resultMap type="com.snake.mcf.sysmgr.repertory.api.dto.gamelist.GameList" id="gameList">
+		<result column="KindID" property="kindId" javaType="java.lang.Long" jdbcType="INTEGER" />
+		<result column="KindName" property="kindName" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="TypeID" property="typeId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="ModuleName" property="moduleName" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="ClientVersion" property="clientVersion" javaType="java.lang.Long" jdbcType="VARCHAR" />
+		<result column="ResVersion" property="resVersion" javaType="java.lang.Integer" jdbcType="VARCHAR" />
+		<result column="SortID" property="sortId" javaType="java.lang.Long" jdbcType="VARCHAR" />
+		<result column="KindMark" property="kindMark" javaType="java.lang.Integer" jdbcType="VARCHAR" />
+		<result column="Nullity" property="nullity" javaType="java.lang.Integer" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="callGetMobileGameAndVersion" parameterType="java.util.HashMap" statementType="CALLABLE" resultMap="gameListConfigInfo,gameList">  
+       <![CDATA[  
+	    {call WHQJPlatformDB.dbo.NET_PW_GetMobileGameAndVersion()} 
+  	   ]]>
+  	</select>
+</mapper>
